@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hci/volunteercategory.dart';
+import 'route.dart';
+import 'assistcategory.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -6,8 +9,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Aidly"),
+        titleTextStyle: TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        backgroundColor: Color.fromRGBO(103, 80, 236, 1),
       ),
       body: Container(
         child: Center(
@@ -25,7 +32,11 @@ class Home extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         //logo
-                        //Image.asset(name)
+                        Icon(
+                          Icons.people,
+                          color: Color.fromRGBO(103, 80, 236, 1),
+                          size: 100.0,
+                        ),
 
                         //App name
                         Padding(
@@ -35,165 +46,109 @@ class Home extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(103, 80, 236, 1),
                             ),
                           ),
                         ),
 
                         //Description
+
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 8.0),
                           child: Text(
-                            'Need a hand? Get help from kind volunteers. ',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                              'Need a hand? Get help from kind volunteers. ',
+                              style: TextStyle(
+                                fontSize: 20,
+                              )),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
-
-                  //Assistance Button
+                  SizedBox(height: 20),
                   Container(
-                   padding: const EdgeInsets.all(16.0),
-                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color:Color.fromRGBO(103, 80, 236, 1)
-                   )
-                   ),
-                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const Edge
-                      )
-                    ],
-                   ), 
-                  ),
-
-                  //Volunteer Button
-                  Container(),
-                ],
-              )),
-        ),
-      ),
-    );
-  }
-}
-//import 'package:flutter/material.dart';
-/*
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Home')),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Container that holds the logo, app name, and description
-              Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade300),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // Logo
-                    Image.asset('assets/logo.png', width: 100), // Adjust logo size
-
-                    // App Name (Bold)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        'My App', // Replace with your app name
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                    width: 500,
+                    height: 150.0,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(RouteManager.createRoute((Assistcategory())));
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        side: BorderSide(
+                          color: Color.fromRGBO(103, 80, 236, 1),
                         ),
                       ),
-                    ),
-
-                    // Description
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        'Welcome to Our App! Here is a short description.',
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.assistant_photo, size: 40),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              'I need Assistance',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color.fromRGBO(103, 80, 236, 1)),
+                            ),
+                          ),
+                          Text(
+                            'Request help from nearby volunteers for everyday tasks.',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(103, 80, 236, 1)),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-
-              // Space between the box and buttons
-              SizedBox(height: 30),
-
-              // First button wrapped in a container
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Container(
-                  width: 200, // Adjust the width of the container
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.blueAccent, // Background color for the container
                   ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      // Define what happens when the first button is pressed
-                    },
-                    icon: Icon(Icons.star, size: 30), // Icon for the button
-                    label: Text(
-                      'Button 1',
-                      style: TextStyle(fontSize: 16), // Text style inside button
+                  SizedBox(height: 10),
+                  Container(
+                    width: 500,
+                    height: 150.0,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            RouteManager.createRoute((Volunteercategory())));
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        side: BorderSide(
+                          color: Color.fromRGBO(103, 80, 236, 1),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.person, size: 40),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              'Im a volunteer',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color.fromRGBO(103, 80, 236, 1)),
+                            ),
+                          ),
+                          Text(
+                            'Lend a hand to those in need and make a difference.',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(103, 80, 236, 1)),
+                          ),
+                        ],
+                      ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 20), // Button padding
-                      primary: Colors.transparent, // Make the button background transparent so the container color shows
-                    ),
-                  ),
-                ),
-              ),
-
-              // Second button wrapped in a container
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Container(
-                  width: 200, // Adjust the width of the container
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.greenAccent, // Background color for the container
-                  ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      // Define what happens when the second button is pressed
-                    },
-                    icon: Icon(Icons.thumb_up, size: 30), // Icon for the button
-                    label: Text(
-                      'Button 2',
-                      style: TextStyle(fontSize: 16), // Text style inside button
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 20), // Button padding
-                      primary: Colors.transparent, // Make the button background transparent so the container color shows
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+                  )
+                ],
+              )),
         ),
       ),
     );
